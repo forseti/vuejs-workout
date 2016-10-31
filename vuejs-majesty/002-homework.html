@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>Hello ???</title>
+</head>
+<body>
+<div id="app">
+    <h2>Hello {{name}}</h2>
+    <h4>Enter your name:</h4>
+    <input v-model="name" type="text" />
+</div>
+</body>
+<!-- cdn that contains all contents of Vue.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '#app',
+        data: {
+            //empty variable each binded to input
+            name: "",
+        },
+    })
+</script>
+</html>

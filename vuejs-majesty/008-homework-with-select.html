@@ -1,0 +1,33 @@
+<html>
+<head>
+	<title>Hello Vue</title>
+</head>
+<body>
+	<div id="app">
+		<h1>
+			Hello
+			<span v-if="gender == 'female'">Miss</span>
+			<span v-if="gender == 'male'">Mister</span>
+			{{ name }}
+		</h1>
+		<h3>Enter your gender:</h3>
+		<select v-model='gender'>
+			<option value="male">Male</option>
+			<option selected="selected" value="female">Female</option>
+		</select>
+		<h3>Enter your name:</h3>
+		<input v-model='name'></input>
+		<pre>{{ $data }}</pre>
+	</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			gender: "",
+			name: ""
+		}
+	})
+</script>
+</html>
