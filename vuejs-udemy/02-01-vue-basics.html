@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js exercise</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1 v-once>{{ title }}</h1>
+		<p>{{ sayHello() }} - <a v-bind:href="link" />Google</p>
+		<hr>
+		<p v-html="finishedLink"></p>
+	</div>
+
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				title: 'Hello World',
+				link: 'http://google.com',
+				finishedLink: '<a href="http://google.com" />Google</p>'
+			},
+			methods: {
+				sayHello: function() {
+					return this.title;
+				}
+			}
+		});
+		
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js exercise</title>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- use component 'my-cmp' -->
+		<my-cmp></my-cmp>
+		<h1></h1>
+		<my-cmp></my-cmp>
+	</div>
+
+	<script type="text/javascript">
+		// Create component 'my-cmp'
+		Vue.component('my-cmp', {
+			data: function() {
+				return {
+					status: 'Critical'
+				}
+			},
+			template: '<p>Status: {{ status }}</p>'
+		});
+		new Vue({
+			el: "#app"
+		});
+
+	</script>
+</body>
+</html>
