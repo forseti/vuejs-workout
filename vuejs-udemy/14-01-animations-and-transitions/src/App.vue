@@ -63,6 +63,7 @@
                 
                 <div class="col-xs-12">
                     <button class="btn btn-primary" @click="load = !load">Load / Remove Element</button>  
+                    <hr>
                     <transition
                         @before-enter="beforeEnter"
                         @enter="enter"
@@ -79,10 +80,23 @@
                     <hr>        
                     <button class="btn btn-primary" 
                             @click="selectedComponent == 'app-success-alert'? selectedComponent = 'app-danger-alert' : selectedComponent = 'app-success-alert'">Toggle Components</button> 
-                    <br>
+                    <hr>
                     <transition name="fade" mode="out-in">
                         <component :is="selectedComponent"></component>
                     </transition>
+                    <hr>
+                    <button class="btn btn-primary" @click="addNumber">Add Number</button>
+                    <hr>
+                    <ul class="list-group">
+                        <transition-group name="slide">
+                            <li class="list-group-item" 
+                                v-for="(number, index) in numbers"
+                                @click="removeNumber(index)"
+                                style="cursor: pointer;"
+                                :key="number">{{ number }}</li>
+                        
+                        </transition-group>
+                    </ul>
                     <br>
                     <br>
                     <br>
@@ -103,7 +117,8 @@
                 load: true,
                 alertAnimation: 'fade',
                 elementWidth: 100,
-                selectedComponent: 'app-success-alert'
+                selectedComponent: 'app-success-alert',
+                numbers: [ 1, 2, 3, 4, 5 ]
             }
         },
         components: {
@@ -161,6 +176,13 @@
             },
             leaveCancelled(el) {
                 console.log('leaveCancelled');
+            },
+            addNumber() {
+                const pos = Math.floor(Math.random() * this.numbers.length);
+                this.numbers.splice(pos, 0, this.numbers.length + 1);
+            },
+            removeNumber(index) {
+                this.numbers.splice(index, 1);
             }
         }
     }
@@ -203,6 +225,15 @@
         animation: slide-out 1s ease-out forwards;
         transition: opacity 3s;
         opacity:0;
+
+        /* required by transition group */
+        position: absolute;
+    }
+
+
+    /* required by transition-group */
+    .slide-move {
+        transition: transform 1s;
     }
 
     @keyframes slide-in {
