@@ -25,7 +25,7 @@
                 <hr>
 
             	<ul>
-            		<li class="list-group-item" v-for="u in users">{{ u.username }} - {{ u.email }}</li>
+            		<li class="list-group-item" v-for="u in users">{{ u.id }} - {{ u.username }} - {{ u.email }}</li>
             	</ul>
             </div>
 
