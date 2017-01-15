@@ -1,0 +1,1 @@
+// Could hold 'value' from store.js
